@@ -1,0 +1,179 @@
+<DOCTYPE html>
+<html>
+<head>
+<title>Movie</title>
+<meta name="description" content="My add movie">
+<meta charset="utf-8">
+<link rel="stylesheet" href="new.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">
+<style>
+ul li{
+list-style:none;
+text-align: left;
+line-height: 50px;
+display: block;
+width:100%;
+}
+form{
+  width: 500px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+#kop{
+
+list-style: none;
+width:100%;
+}
+
+#san{
+
+float:left;
+}
+.space{
+  margin-left: 168px;
+  width: 50%;
+}
+
+#sa{
+  float:left;
+margin-left: 50px;
+}
+#nb{
+  float: right;
+  margin-right: 50px;
+  margin-top: 10px;
+}
+#tagg1{
+
+  float:right;
+
+}
+#tagg1 a{
+
+    color:yellow;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+select{
+width:50%;
+color:white;
+  background-color: #442D4B;
+}
+body{
+  background-color: #442D4B;
+  color: white;
+  width: 100%;
+  font-family: 'Lato',sans-serif;
+
+}
+input,textarea{
+display: block;
+  background-color: #442D4B;
+font-family: 'Lato',sans-serif;
+display: block;
+color:white;
+width:100%;
+}
+#save_button{
+  background-color: yellow;
+width:100px;
+margin: 0 auto;
+
+
+}
+label{
+  margin: 0 auto;
+}
+
+</style>
+
+</head>
+<body>
+  <header>
+    <div id="kop">
+    <img src="./images/projector-logo.png" class="logo" alt="oops">
+    <nav>
+
+
+<ul id="tagg1">
+          <a href="index.html" > Home</a>
+          <a href="addmovies.html" > Add Movie </a>
+
+       </ul>
+
+
+    </nav></div>
+  </header>
+<br><br><br><br><br>
+  <center><h2>Add a movie</h2></center>
+  <form action="/sample-action" method="post">
+    <ul>
+      <li>
+    <label for="movie-name"> Movie name</label>
+    <input type="text" name="movie-name" value="data" required>
+  </li>
+  <li>
+    <label for="release"> Release year</label>
+    <input type="text" name="release" required>
+  </li>
+  <li>
+    <label for="Lg" id="saas"> Language</label>
+    <label for="rt" class="space"> Rating</label></li>
+<li><select>
+      <option value="empty"></option>
+    <option value="English">English</option>
+    <option value="Tamil">Tamil</option>
+    <option value="French">French</option>
+    <option value="Hindi">Hindi</option>
+
+  </select>
+
+
+<select>
+      <option value="empty"></option>
+    <option value="one">1</option>
+    <option value="two">2</option>
+    <option value="three">3</option>
+    <option value="four">4</option>
+
+  </select>
+</li>
+<li>
+<label for="thumb"> Thumbnail URL</label>
+<input type="url" name="thumb" required>
+</li>
+
+<li>
+
+  <label for="plot"> Plot</label></li>
+  <li>
+  <textarea rows="4" cols="50"></textarea>
+
+</li>
+<li>
+<label for="posturl"> posterurl</label></li>
+<li>
+<textarea rows="4" cols="50"></textarea>
+
+</li>
+
+  <li>
+  <label for="cast"> CAST</label></li>
+  <li>
+  <textarea rows="4" cols="50"></textarea><br>
+
+  </li>
+
+    <li><input type="submit" id="save_button" value="save" ></li>
+  </ul>
+</form>
+<footer>
+  <div id="sa">
+  <img src="./images/facebook.png" width="50px" height="50px"  alt="oops">
+    <img src="./images/instagram.png" width="50px" height="50px" alt="oops">
+      <img src="./images/twitter.png" width="50px" height="50px" alt="oops">
+</div>
+<div id="nb">
+  <img src="./images/projector-logo.png" id="san" width="200px" alt="oops">
+</footer>
