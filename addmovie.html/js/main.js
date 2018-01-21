@@ -1,62 +1,68 @@
-console.log("this file is loaded");
+console.log("js added");
 $.ajax({
-type:"GET",
-url:"https://api.myjson.com/bins/tls49",
-dataType:"json",
-success:function(response){
-  ///console.log("Data from server",response);
+  type:"GET",
+  url:"https://api.myjson.com/bins/tls49",
+  dataType:"json",
+  success:function(response){
+    //console.log("Data from server",response);
+    var data=formObject(response);
 
- var data=formObject(response);
- constructDOM(data);
+    constructDOM(data);
 },
 error:function(err){
-  console.log("the error is",err);
+  console.log("Error in get method",err);
 }
+
 
 });
-/*{
-  language":"",
-  "movies":[]
-}*/
-function formObject(response){
-var flags=[], categoryObject=[];
-var len=response.length;
 
-for(i=0;i<len;i++){
-  var movie=response[i];
-  var index=flags.indexOf(movie.language);
-//  console.log(response[i]);
-  //console.log("language",response[i].language);
-  if(index>=0){
-    categoryObject[index].movies.push(movie);
+
+function formObject(resp){
+  var flags=[],categoryObject=[];
+  var rlength=resp.length;
+//var objectArr=[]
+  for(i=0;i<rlength;i++)
+  {
+    var mov=resp[i];
+  //  console.log("movie:",mov);
+  //  console.log("language:",mov.language);
+/*  if (flags.indexOf(mov.language)==-1){
+  flags.push(mov.language);*/
+  var index=flags.indexOf(mov.language);
+  if(index>=0)
+  {
+    categoryObject[index].movies.push(mov);
     continue;
   }
-
   else{
-    flags.push(movie.language);
+    flags.push(mov.language);
   }
-  var objectschema={
-    "category":movie.language,
-    "movies":[]
-  }
-
-
-objectschema.movies.push(movie);
-categoryObject.push(objectschema);
-
-  console.log("obsc",objectschema);
+var objectSchema={
+  "category":mov.language,
+  "movies":[]
 }
-console.log(flags);
+objectSchema.movies.push(mov);
+categoryObject.push(objectSchema);
+}console.log(categoryObject);
 return categoryObject;
 }
-function constructDOM(data){
-  var categoryContent=[];
-for(i=0;i<data.length;i++){
-  var category1=data[i];
-  console.log("constructDOM",category1);
-  var categoryTilte=$('<h3 class="categoryName">'+ category1.category +'</h3>');
-  categoryContent.push(categoryTilte);
 
-}
-  $('section.content').html(categoryContent);
+
+function constructDOM(data)
+{var categoryContent=['<div class="clearfix category">'];
+
+  for(i=0;i<data.length;i++)
+  {var objectSchema=data[i];
+    //console.log("constructionDOm",objectSchema);
+    var categoryTitle=$('<h3 class="categoryName">'+objectSchema.category+'</h3>');
+  categoryContent.push(categoryTitle);
+for(j=0;j<objectSchema.movies.length;j++)
+  {
+    console.log(objectSchema.movies[j].name);
+    var categoryMovie=$('<div class="movie fleft"><a href="#"><div class="poster"><img src="'+objectSchema.movies[j].thumbnailUrl+'" alt=""></div></a><div class="details"><p class="yearOfRelease">'+objectSchema.movies[j].releaseYear+'</p><h4 class="name">'+objectSchema.movies[j].name+'</h4></div>');
+    categoryContent.push(categoryMovie);
+ }
+  }
+  categoryContent.push('</div>')
+    $('.content').html(categoryContent);
 }
